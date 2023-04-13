@@ -1,12 +1,23 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
-import Button from "../components/Button";
+import Autocomplete from "../components/Autocomplete";
+
+type ListItemType = { id: number; city: string; country: string };
 
 const Home = () => {
   return (
-    <View className="items-center justify-center h-full">
-      <Text>Home</Text>
-      <Button>Button primary</Button>
+    <View className="px-3 py-5">
+      <Autocomplete<ListItemType>
+        label="Miasto"
+        placeholder="Podaj nazwę miasta..."
+        data={[]}
+        renderItem={({ item }) => (
+          <Autocomplete.ListItem
+            labelPrimary={item.city}
+            labelSecondary={item.country}
+          />
+        )}
+      />
     </View>
   );
 };
