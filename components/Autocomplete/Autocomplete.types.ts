@@ -5,10 +5,12 @@ export interface AutocompleteProps<DataItemType> extends TextInputProps {
   placeholder: string;
   data: DataItemType[];
   renderItem: ListRenderItem<DataItemType>;
+  onSelect: React.Dispatch<React.SetStateAction<CityItemType>>;
+  onQueryChange: (query: string) => void;
 }
 
-export interface AutocompleteListItemProps {
-  labelPrimary: string;
-  labelSecondary?: string;
-  icon?: () => JSX.Element;
-}
+export type CityItemType = { id: number; city: string; country: string };
+
+export type AutocompleteContextType = {
+  handleSelection: (value: CityItemType) => void;
+};

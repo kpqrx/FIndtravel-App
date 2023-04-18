@@ -10,9 +10,9 @@ const styles = {
     tertiary: "px-4 py-2 border-2 border-black rounded-3xl",
   },
   text: {
-    primary: "text-white font-bold",
-    secondary: "text-black font-bold",
-    tertiary: "text-black font-bold text-xs",
+    primary: "text-white font-bold text-center",
+    secondary: "text-black font-bold text-center",
+    tertiary: "text-black font-bold text-center text-xs",
   },
   icon: {
     primary: {
