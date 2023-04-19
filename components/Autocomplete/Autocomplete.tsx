@@ -39,7 +39,7 @@ const Autocomplete = <T extends {}>(props: AutocompleteProps<T>) => {
   };
 
   const handleFocus = () => {
-    setListVisible((prevState) => prevState !== data.length > 0);
+    setListVisible(data.length > 0);
   };
 
   const handleSelection = (value: CityItemType) => {
@@ -67,7 +67,8 @@ const Autocomplete = <T extends {}>(props: AutocompleteProps<T>) => {
           {...restProps}
         />
         {isListVisible && (
-          <View className="rounded-lg border border-gray-300 bg-gray-50 w-full mt-2 shadow-md">
+          // TODO: fix list height
+          <View className="rounded-lg border border-gray-300 bg-gray-50 w-full h-2/3 mt-2 shadow-md">
             <FlatList
               className="px-4 py-2"
               data={data}
