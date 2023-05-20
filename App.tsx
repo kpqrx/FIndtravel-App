@@ -11,42 +11,46 @@ import {
 import { StatusBar } from "expo-status-bar";
 import TabBarButton from "./components/TabBarButton/TabBarButton";
 import { black } from "tailwindcss/colors";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./store";
 
 export default function App() {
   const Tabs = createBottomTabNavigator();
 
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <Tabs.Navigator
-        screenOptions={{
-          header: Header,
-          tabBarShowLabel: false,
-          tabBarButton: (props) => <TabBarButton {...props} />,
-          tabBarActiveTintColor: black,
-        }}
-      >
-        <Tabs.Screen
-          name="Home"
-          component={Home}
-          options={{ tabBarIcon: PlusCircleIcon }}
-        />
-        <Tabs.Screen
-          name="List"
-          component={List}
-          options={{ tabBarIcon: ClipboardDocumentCheckIcon }}
-        />
-        <Tabs.Screen
-          name="Spendings"
-          component={Spendings}
-          options={{ tabBarIcon: BanknotesIcon }}
-        />
-        <Tabs.Screen
-          name="Bookmarks"
-          component={Bookmarks}
-          options={{ tabBarIcon: BookmarkIcon }}
-        />
-      </Tabs.Navigator>
-    </NavigationContainer>
+    <ReduxProvider store={store}>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Tabs.Navigator
+          screenOptions={{
+            header: Header,
+            tabBarShowLabel: false,
+            tabBarButton: (props) => <TabBarButton {...props} />,
+            tabBarActiveTintColor: black,
+          }}
+        >
+          <Tabs.Screen
+            name="Home"
+            component={Home}
+            options={{ tabBarIcon: PlusCircleIcon, headerShown: false }}
+          />
+          <Tabs.Screen
+            name="List"
+            component={List}
+            options={{ tabBarIcon: ClipboardDocumentCheckIcon }}
+          />
+          <Tabs.Screen
+            name="Spendings"
+            component={Spendings}
+            options={{ tabBarIcon: BanknotesIcon }}
+          />
+          <Tabs.Screen
+            name="Bookmarks"
+            component={Bookmarks}
+            options={{ tabBarIcon: BookmarkIcon }}
+          />
+        </Tabs.Navigator>
+      </NavigationContainer>
+    </ReduxProvider>
   );
 }

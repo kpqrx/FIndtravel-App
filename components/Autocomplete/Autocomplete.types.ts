@@ -9,7 +9,7 @@ export interface AutocompleteProps<DataItemType> extends TextInputProps {
   onQueryChange: (query: string) => void;
 }
 
-export type CityItemType = { id: number; city: string; country: string };
+export type CityItemType = { geonameId: number; city: string; country: string };
 
 export type AutocompleteContextType = {
   handleSelection: (value: CityItemType) => void;

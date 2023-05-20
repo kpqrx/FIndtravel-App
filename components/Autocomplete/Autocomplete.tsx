@@ -58,7 +58,6 @@ const Autocomplete = <T extends {}>(props: AutocompleteProps<T>) => {
           className="rounded-xl border border-gray-400 p-4 mt-2"
           placeholder={placeholder}
           onFocus={handleFocus}
-          onBlur={handleBlur}
           onChangeText={(x) => {
             setValue(x);
             debouncedQueryChange(x);
@@ -82,14 +81,14 @@ const Autocomplete = <T extends {}>(props: AutocompleteProps<T>) => {
 };
 
 const ListItem = (props: CityItemType) => {
-  const { city, country, id, ...restProps } = props;
+  const { city, country, geonameId, ...restProps } = props;
 
   const { handleSelection } = useContext(AutocompleteContext)!;
 
   return (
     <Pressable
       className="py-3 border-b flex-row border-gray-300 gap-2 items-center"
-      onPress={() => handleSelection({ city, country, id })!}
+      onPress={() => handleSelection({ city, country, geonameId })!}
       {...restProps}
     >
       <MapPinIcon color={gray[500]} />
